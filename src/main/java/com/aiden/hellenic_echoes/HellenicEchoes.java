@@ -1,6 +1,10 @@
 package com.aiden.hellenic_echoes;
 
+import com.aiden.hellenic_echoes.block.ModBlocks;
+import com.aiden.hellenic_echoes.item.ModCreativeModeTabs;
+import com.aiden.hellenic_echoes.item.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -26,6 +30,11 @@ public class HellenicEchoes
     {
         IEventBus modEventBus = context.getModEventBus();
 
+        ModCreativeModeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -41,9 +50,12 @@ public class HellenicEchoes
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.AETHER_CRISTAL);
+            event.accept(ModItems.AETHER_SHARD);
+            event.accept(ModItems.BRONZE);
+        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
