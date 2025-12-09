@@ -24,6 +24,8 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModBlocks.BRONZE_ORE.get());
                         output.accept(ModBlocks.AETHER_ORE.get());
+
+                        output.accept(ModBlocks.ALLOY_FORGE_BLOCK.get());
                     })
                     .build());
 

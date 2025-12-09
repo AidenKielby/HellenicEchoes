@@ -1,9 +1,13 @@
 package com.aiden.hellenic_echoes;
 
 import com.aiden.hellenic_echoes.block.ModBlocks;
+import com.aiden.hellenic_echoes.block.entity.ModBlockEntities;
 import com.aiden.hellenic_echoes.item.ModCreativeModeTabs;
 import com.aiden.hellenic_echoes.item.ModItems;
+import com.aiden.hellenic_echoes.screen.AlloyForgeScreen;
+import com.aiden.hellenic_echoes.screen.ModMenuTypes;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -34,6 +38,10 @@ public class HellenicEchoes
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        ModBlockEntities.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -72,7 +80,7 @@ public class HellenicEchoes
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            MenuScreens.register(ModMenuTypes.ALLOY_FORGE_MENU.get(), AlloyForgeScreen::new);
         }
     }
 }
