@@ -3,6 +3,11 @@
   "item.hellenicechoes.aether_shard": "Aether Shard",
   "item.hellenicechoes.bronze": "Bronze",
 
+  "item.hellenicechoes.bronze_helmet": "Bronze Helmet",
+  "item.hellenicechoes.bronze_chestplate": "Bronze Chestplate",
+  "item.hellenicechoes.bronze_leggings": "Bronze Leggings",
+  "item.hellenicechoes.bronze_boots": "Bronze Boots",
+
   "block.hellenicechoes.bronze_ore": "Bronze Ore",
   "block.hellenicechoes.aether_ore": "Aether Ore",
 

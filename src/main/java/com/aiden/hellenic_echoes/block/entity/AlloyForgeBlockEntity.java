@@ -1,6 +1,7 @@
 package com.aiden.hellenic_echoes.block.entity;
 
 import com.aiden.hellenic_echoes.item.ModItems;
+import com.aiden.hellenic_echoes.recipe.AlloyForgeRecipe;
 import com.aiden.hellenic_echoes.screen.AlloyForgeMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,6 +28,8 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class AlloyForgeBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(4);
@@ -146,6 +149,11 @@ public class AlloyForgeBlockEntity extends BlockEntity implements MenuProvider {
         if (hasLavaInSlot()){
             addLava();
         }
+
+        //System.out.println("Has recipe: " + hasRecipe());
+        //System.out.println("Lava amount: " + lavaAmount);
+        //System.out.println("Slot 0: " + itemHandler.getStackInSlot(0));
+        //System.out.println("Slot 1: " + itemHandler.getStackInSlot(1));
     }
 
     private void addLava() {
@@ -173,10 +181,13 @@ public class AlloyForgeBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(ModItems.BRONZE.get(), 1);
+        Optional<AlloyForgeRecipe> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return;
+
+        ItemStack result = recipe.get().getResultItem(null);
         this.itemHandler.extractItem(LEFT_INPUT_SLOT, 1, false);
         this.itemHandler.extractItem(RIGHT_INPUT_SLOT, 1, false);
-        this.lavaAmount -= 10;
+        this.lavaAmount -= recipe.get().getLavaUsage();
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
@@ -191,13 +202,22 @@ public class AlloyForgeBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe() {
-        boolean hasLeftCraftingItem = this.itemHandler.getStackInSlot(LEFT_INPUT_SLOT).getItem() == Items.IRON_INGOT;
-        boolean hasRightCraftingItem = this.itemHandler.getStackInSlot(RIGHT_INPUT_SLOT).getItem() == Items.COPPER_INGOT;
-        boolean hasLava = this.lavaAmount > 0;
-        ItemStack result = new ItemStack(ModItems.BRONZE.get());
+        Optional<AlloyForgeRecipe> recipe = getCurrentRecipe();
+        if (recipe.isEmpty()) return false;
 
-        return hasLeftCraftingItem && hasRightCraftingItem && hasLava
-                && canInsertAmmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        boolean hasLava = this.lavaAmount >= recipe.get().getLavaUsage();
+        ItemStack result = recipe.get().getResultItem(null);
+
+        return hasLava && canInsertAmmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+    }
+
+    private Optional<AlloyForgeRecipe> getCurrentRecipe() {
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(AlloyForgeRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {

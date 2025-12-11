@@ -4,6 +4,7 @@ import com.aiden.hellenic_echoes.block.ModBlocks;
 import com.aiden.hellenic_echoes.block.entity.ModBlockEntities;
 import com.aiden.hellenic_echoes.item.ModCreativeModeTabs;
 import com.aiden.hellenic_echoes.item.ModItems;
+import com.aiden.hellenic_echoes.recipe.ModRecipes;
 import com.aiden.hellenic_echoes.screen.AlloyForgeScreen;
 import com.aiden.hellenic_echoes.screen.ModMenuTypes;
 import com.mojang.logging.LogUtils;
@@ -16,7 +17,6 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -42,6 +42,7 @@ public class HellenicEchoes
         ModBlockEntities.register(modEventBus);
 
         ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

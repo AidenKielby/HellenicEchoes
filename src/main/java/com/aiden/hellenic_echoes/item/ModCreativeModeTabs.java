@@ -26,6 +26,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.AETHER_ORE.get());
 
                         output.accept(ModBlocks.ALLOY_FORGE_BLOCK.get());
+
+                        output.accept(ModItems.BRONZE_HELMET.get());
+                        output.accept(ModItems.BRONZE_CHESTPLATE.get());
+                        output.accept(ModItems.BRONZE_LEGGINGS.get());
+                        output.accept(ModItems.BRONZE_BOOTS.get());
                     })
                     .build());
 

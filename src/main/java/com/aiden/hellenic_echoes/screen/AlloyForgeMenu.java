@@ -33,7 +33,7 @@ public class AlloyForgeMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 56, 11));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 55, 11));
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 106, 11));
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 54, 59));
             this.addSlot(new SlotItemHandler(iItemHandler, 3, 80, 59));

@@ -4,10 +4,9 @@ import com.aiden.hellenic_echoes.HellenicEchoes;
 import com.aiden.hellenic_echoes.block.ModBlocks;
 import com.aiden.hellenic_echoes.item.ModItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -30,6 +29,44 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreBlasting(consumer, List.of(ModBlocks.AETHER_ORE.get()), RecipeCategory.MISC, ModItems.AETHER_CRISTAL.get(), 0.25f, 100, "aether");
         oreBlasting(consumer, List.of(ModBlocks.BRONZE_ORE.get()), RecipeCategory.MISC, ModItems.BRONZE.get(), 0.25f, 100, "aether");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BRONZE_HELMET.get(), 1)
+                .pattern("   ")
+                .pattern("XXX")
+                .pattern("X X")
+                .define('X', ModItems.BRONZE.get())
+                .unlockedBy("has_bronze", has(ModItems.BRONZE.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BRONZE_CHESTPLATE.get(), 1)
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("XXX")
+                .define('X', ModItems.BRONZE.get())
+                .unlockedBy("has_bronze", has(ModItems.BRONZE.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BRONZE_LEGGINGS.get(), 1)
+                .pattern("XXX")
+                .pattern("X X")
+                .pattern("X X")
+                .define('X', ModItems.BRONZE.get())
+                .unlockedBy("has_bronze", has(ModItems.BRONZE.get()))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BRONZE_BOOTS.get(), 1)
+                .pattern("X X")
+                .pattern("X X")
+                .define('X', ModItems.BRONZE.get())
+                .unlockedBy("has_bronze", has(ModItems.BRONZE.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ALLOY_FORGE_BLOCK.get(), 1)
+                .pattern("BBB")
+                .pattern("IXI")
+                .pattern("BBB")
+                .define('X', ModItems.AETHER_CRISTAL.get())
+                .define('B', Items.BRICK)
+                .define('I', Items.IRON_INGOT)
+                .unlockedBy("has_aether_cristal", has(ModItems.AETHER_CRISTAL.get()))
+                .save(consumer);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {

@@ -1,9 +1,13 @@
 package com.aiden.hellenic_echoes.datagen;
 
 import com.aiden.hellenic_echoes.HellenicEchoes;
+import com.aiden.hellenic_echoes.item.ModItems;
+import com.aiden.hellenic_echoes.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -17,6 +21,15 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
+        this.tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.BRONZE_HELMET.get(),
+                        ModItems.BRONZE_CHESTPLATE.get(),
+                        ModItems.BRONZE_LEGGINGS.get(),
+                        ModItems.BRONZE_BOOTS.get());
 
+        this.tag(ModTags.Items.DASH_PROPERTY)
+                .addTag(ItemTags.SWORDS)
+                .addTag(ItemTags.AXES)
+                .add(Items.TRIDENT);
     }
 }

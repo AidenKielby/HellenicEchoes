@@ -4,6 +4,7 @@ import com.aiden.hellenic_echoes.HellenicEchoes;
 import com.aiden.hellenic_echoes.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -19,8 +20,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.BRONZE_ORE);
         blockWithItem(ModBlocks.AETHER_ORE);
 
-        simpleBlockWithItem(ModBlocks.ALLOY_FORGE_BLOCK.get(),
-                new ModelFile.UncheckedModelFile(modLoc("block/alloy_forge_block")));
+        horizontalBlock(ModBlocks.ALLOY_FORGE_BLOCK.get(),
+                models().getExistingFile(modLoc("block/alloy_forge_block")));
+
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject){
