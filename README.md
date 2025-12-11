@@ -58,7 +58,7 @@ A Minecraft mod that brings ancient Greek-inspired content to your world, includ
 ### Prerequisites
 - Java Development Kit (JDK) 17
 - Git
-- IDE of your choice (IntelliJ IDEA or Eclipse recommended)
+- IDE of your choice (IntelliJ IDEA, Eclipse, or VSCode recommended)
 
 ### Setting Up in IntelliJ IDEA
 
@@ -111,6 +111,40 @@ A Minecraft mod that brings ancient Greek-inspired content to your world, includ
    - Right-click on the project
    - Run As → Java Application
    - Select "runClient" or "runServer"
+
+### Setting Up in VSCode
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/AidenKielby/HellenicEchoes.git
+   cd HellenicEchoes
+   ```
+
+2. **Install Required Extensions**
+   - Open VSCode
+   - Install the following extensions from the Extensions marketplace (Ctrl+Shift+X):
+     - **Extension Pack for Java** (by Microsoft) - Provides Java language support
+     - **Gradle for Java** (by Microsoft) - Provides Gradle support
+
+3. **Open the Project**
+   - File → Open Folder
+   - Select the HellenicEchoes folder
+   - VSCode will automatically detect the Gradle project and import it
+   - Wait for Gradle to sync and download dependencies
+
+4. **Configure Run Tasks**
+   - Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on Mac)
+   - Type "Tasks: Run Task" and select it
+   - Choose "gradle" and then select:
+     - `runClient` to run Minecraft with the mod loaded
+     - `runServer` to run a dedicated server with the mod
+   - Alternatively, open the Gradle panel from the sidebar and navigate to:
+     - `HellenicEchoes → Tasks → forgegradle runs → runClient` (or runServer)
+     - Click to execute
+
+5. **Debug the Mod (Optional)**
+   - To debug, use the Gradle tasks with the `--debug-jvm` flag
+   - Or set up a launch configuration in `.vscode/launch.json` to attach to the Gradle process
 
 ### Common Development Commands
 
