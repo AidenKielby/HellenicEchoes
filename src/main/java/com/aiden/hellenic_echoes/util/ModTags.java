@@ -19,7 +19,8 @@ public class ModTags {
     }
 
     public static class Items {
-        public static final TagKey<Item> DASH_PROPERTY = tag("dash_property");
+        public static final TagKey<Item> AETHER_TAG_ITEM = tag("dash_property");
+        public static final TagKey<Item> AETHER_TAG_ARMOUR = tag("dash_property");
 
         private static TagKey<Item> tag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(HellenicEchoes.MODID, name));

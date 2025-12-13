@@ -27,7 +27,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.BRONZE_LEGGINGS.get(),
                         ModItems.BRONZE_BOOTS.get());
 
-        this.tag(ModTags.Items.DASH_PROPERTY)
+        this.tag(ModTags.Items.AETHER_TAG_ITEM)
                 .addTag(ItemTags.SWORDS)
                 .addTag(ItemTags.AXES)
                 .add(Items.TRIDENT);

@@ -2,7 +2,10 @@ package com.aiden.hellenic_echoes.event;
 
 import com.aiden.hellenic_echoes.HellenicEchoes;
 import com.aiden.hellenic_echoes.item.ModItems;
+import com.aiden.hellenic_echoes.util.ModTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,16 +19,44 @@ public class ModAnvilEvents {
         ItemStack right = event.getRight();
 
         if (right.getItem() == ModItems.AETHER_SHARD.get()){
-            ItemStack result = left.copy();
-            result.getOrCreateTag().putString("AetherTag", pickRandomTag());
+            if(left.is(ModTags.Items.AETHER_TAG_ITEM)){
+                ItemStack result = left.copy();
+                result.getOrCreateTag().putString("AetherTag", pickRandomItemTag());
 
-            event.setOutput(result);
-            event.setCost(5);
+
+                event.setOutput(result);
+                event.setCost(5);
+            }
+            else if (left.is(Tags.Items.ARMORS_HELMETS)){
+                ItemStack result = left.copy();
+                result.getOrCreateTag().putString("AetherTag", pickRandomHelmetTag());
+
+                event.setOutput(result);
+                event.setCost(6);
+            }
+            else if (left.is(ModTags.Items.AETHER_TAG_ARMOUR)){
+                ItemStack result = left.copy();
+                result.getOrCreateTag().putString("AetherTag", pickRandomArmorTag());
+
+                event.setOutput(result);
+                event.setCost(8);
+            }
+
         }
     }
 
-    public static String pickRandomTag(){
-        String[] tags = {"aether_dash"};
+    public static String pickRandomItemTag(){
+        String[] tags = {"aether_dash", "moons_power", "greed"};
+        return tags[(int) (Math.random() * tags.length)];
+    }
+
+    public static String pickRandomArmorTag(){
+        String[] tags = {""};
+        return tags[(int) (Math.random() * tags.length)];
+    }
+
+    public static String pickRandomHelmetTag(){
+        String[] tags = {"apollos_sight"};
         return tags[(int) (Math.random() * tags.length)];
     }
 }

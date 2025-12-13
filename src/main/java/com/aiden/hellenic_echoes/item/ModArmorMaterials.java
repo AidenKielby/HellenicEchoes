@@ -10,7 +10,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    BRONZE("bronze", 26, new int[]{5,7,5,4}, 25,
+    BRONZE("bronze", 26, new int[]{3,5,4,3}, 25,
             SoundEvents.ARMOR_EQUIP_IRON, 1.0f, 0.0f, () -> Ingredient.of(ModItems.BRONZE.get()));
 
     private final String name;
@@ -22,7 +22,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
     private final float knockbackResistance;
     private final Supplier<Ingredient> repairIngredient;
 
-    private static final int[] BASE_DURABILITY = new int[] {11, 16, 16, 13};
+    private static final int[] BASE_DURABILITY = new int[] {14, 17, 17, 14};
 
     ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmmounts, int enchantmentValue, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
         this.name = name;
