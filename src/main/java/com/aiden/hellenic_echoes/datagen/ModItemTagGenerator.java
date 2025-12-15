@@ -9,6 +9,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,5 +32,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 .addTag(ItemTags.SWORDS)
                 .addTag(ItemTags.AXES)
                 .add(Items.TRIDENT);
+
+        this.tag(ModTags.Items.AETHER_TAG_ARMOUR)
+                .addTag(ItemTags.TRIMMABLE_ARMOR);
     }
 }

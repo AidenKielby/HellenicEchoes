@@ -4,6 +4,7 @@ import com.aiden.hellenic_echoes.HellenicEchoes;
 import com.aiden.hellenic_echoes.item.ModItems;
 import com.aiden.hellenic_echoes.util.ModTags;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.AnvilUpdateEvent;
@@ -26,6 +27,7 @@ public class ModAnvilEvents {
 
                 event.setOutput(result);
                 event.setCost(5);
+                event.setMaterialCost(1);
             }
             else if (left.is(Tags.Items.ARMORS_HELMETS)){
                 ItemStack result = left.copy();
@@ -33,6 +35,7 @@ public class ModAnvilEvents {
 
                 event.setOutput(result);
                 event.setCost(6);
+                event.setMaterialCost(1);
             }
             else if (left.is(ModTags.Items.AETHER_TAG_ARMOUR)){
                 ItemStack result = left.copy();
@@ -40,6 +43,7 @@ public class ModAnvilEvents {
 
                 event.setOutput(result);
                 event.setCost(8);
+                event.setMaterialCost(1);
             }
 
         }
