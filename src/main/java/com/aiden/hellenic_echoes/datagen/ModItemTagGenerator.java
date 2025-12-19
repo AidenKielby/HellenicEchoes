@@ -35,5 +35,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.tag(ModTags.Items.AETHER_TAG_ARMOUR)
                 .addTag(ItemTags.TRIMMABLE_ARMOR);
+
+        this.tag(Tags.Items.ARMORS_HELMETS)
+                .add(ModItems.BRONZE_HELMET.get());
     }
 }

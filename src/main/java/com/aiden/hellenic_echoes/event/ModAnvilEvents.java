@@ -20,16 +20,7 @@ public class ModAnvilEvents {
         ItemStack right = event.getRight();
 
         if (right.getItem() == ModItems.AETHER_SHARD.get()){
-            if(left.is(ModTags.Items.AETHER_TAG_ITEM)){
-                ItemStack result = left.copy();
-                result.getOrCreateTag().putString("AetherTag", pickRandomItemTag());
-
-
-                event.setOutput(result);
-                event.setCost(5);
-                event.setMaterialCost(1);
-            }
-            else if (left.is(Tags.Items.ARMORS_HELMETS)){
+            if (left.is(Tags.Items.ARMORS_HELMETS)){
                 ItemStack result = left.copy();
                 result.getOrCreateTag().putString("AetherTag", pickRandomHelmetTag());
 
@@ -37,12 +28,22 @@ public class ModAnvilEvents {
                 event.setCost(6);
                 event.setMaterialCost(1);
             }
+
             else if (left.is(ModTags.Items.AETHER_TAG_ARMOUR)){
                 ItemStack result = left.copy();
                 result.getOrCreateTag().putString("AetherTag", pickRandomArmorTag());
 
                 event.setOutput(result);
                 event.setCost(8);
+                event.setMaterialCost(1);
+            }
+            else if(left.is(ModTags.Items.AETHER_TAG_ITEM)){
+                ItemStack result = left.copy();
+                result.getOrCreateTag().putString("AetherTag", pickRandomItemTag());
+
+
+                event.setOutput(result);
+                event.setCost(5);
                 event.setMaterialCost(1);
             }
 

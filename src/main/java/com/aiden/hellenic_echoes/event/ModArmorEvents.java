@@ -26,6 +26,7 @@ import java.util.UUID;
 public class ModArmorEvents {
 
     private static final UUID CUSTOM_MOON_DAMAGE_UUID = UUID.fromString("e1a1f3c4-5b6d-4f7e-9a2b-3c4d5e6f7a8b");
+    private static boolean hadeffect = false;
 
     private static boolean isNight(Level level) {
         long time = level.getDayTime() % 24000L;
@@ -46,7 +47,6 @@ public class ModArmorEvents {
 
         int maxLight = Math.max(Math.max(blockLightFeet, skyLightFeet),
                 Math.max(blockLightEye,  skyLightEye));
-        System.out.println(maxLight);
         return maxLight <= 12;
     }
 
@@ -68,14 +68,21 @@ public class ModArmorEvents {
         if (lightLevelIsLow(player.level(), player)) {
             ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
             if (!helmet.hasTag()) return;
-            if(helmet != null && helmet.getTag().getString("AetherTag").equals("apollos_sight")) {
+            if (helmet != null && helmet.getTag().getString("AetherTag").equals("apollos_sight")) {
                 player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
                         net.minecraft.world.effect.MobEffects.NIGHT_VISION,
-                        10, // Duration in ticks (10 seconds)
+                        500, // Duration in ticks (10 seconds)
                         0,   // Amplifier level (0 = level 1)
                         false, // Ambient
                         false  // Show particles
                 ));
+                hadeffect = true;
+            }
+        }
+        else{
+            if (hadeffect) {
+                player.removeEffect(net.minecraft.world.effect.MobEffects.NIGHT_VISION);
+                hadeffect = false;
             }
         }
     }
