@@ -4,6 +4,23 @@ A Minecraft mod that brings ancient Greek-inspired content to your world, includ
 
 ## Quick load for mac
 
+make folder called `.vscode` in the `HellenicEchoes-master` or whatever you renamed it to
+
+make a file called `settings.json` with contents:
+```
+{
+    "java.jdt.ls.java.home": "${userHome}/Downloads/jdk-17.0.12.jdk/Contents/Home",
+
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "${userHome}/Downloads/jdk-17.0.12.jdk/Contents/Home",
+            "default": true
+        }
+    ]
+}
+```
+
 `nano ~/.zshrc`
 
 paste: (replace the things before "/Contents/Home" with ur path to the jdk)
