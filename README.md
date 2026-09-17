@@ -2,6 +2,25 @@
 
 A Minecraft mod that brings ancient Greek-inspired content to your world, including bronze crafting, mystical aether crystals, and custom alloy forging mechanics.
 
+## Quick load for mac
+`nano ~/.zshrc`
+paste: (replace the things before "/Contents/Home" with ur path to the jdk)
+```
+export JAVA_HOME="$HOME/Downloads/jdk-17.0.12.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+```
+Controll+O
+Enter
+Controll+X
+`source ~/.zshrc`
+Verify with:
+```
+echo $JAVA_HOME
+java -version
+```
+then: `./gradlew runClient` and ur done
+
+
 ## 📋 Description
 
 **Hellenic Echoes** is a Minecraft Forge mod for version 1.20.1 that adds Greek mythology-themed items, blocks, and gameplay mechanics. Craft bronze tools and armor, discover rare aether crystals, and use the custom Alloy Forge to create powerful alloys.
