@@ -4,8 +4,8 @@ A Minecraft mod that brings ancient Greek-inspired content to your world, includ
 
 ## Quick load for mac
 * download the mod (dont chaneg the file name at all!)
-* open the folder and run the mod_launcher file
-* allow everything (it needs access to ur folders so it can find the mod folder)
+* open the folder and run the mod_launcher.py file (make sure you open with "Python Launcher"
+* allow everything if it asks (it needs access to ur folders so it can find the mod folder)
 * cachow you can play minecraft now (it may take a minute to load cuz it needs to download all the assets)
 
 
