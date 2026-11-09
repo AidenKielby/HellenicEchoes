@@ -3,45 +3,10 @@
 A Minecraft mod that brings ancient Greek-inspired content to your world, including bronze crafting, mystical aether crystals, and custom alloy forging mechanics.
 
 ## Quick load for mac
-
-make folder called `.vscode` in the `HellenicEchoes-master` or whatever you renamed it to
-
-make a file called `settings.json` with contents:
-```
-{
-    "java.jdt.ls.java.home": "${userHome}/Downloads/jdk-17.0.12.jdk/Contents/Home",
-
-    "java.configuration.runtimes": [
-        {
-            "name": "JavaSE-17",
-            "path": "${userHome}/Downloads/jdk-17.0.12.jdk/Contents/Home",
-            "default": true
-        }
-    ]
-}
-```
-
-`nano ~/.zshrc`
-
-paste: (replace the things before "/Contents/Home" with ur path to the jdk)
-```
-export JAVA_HOME="$HOME/Downloads/jdk-17.0.12.jdk/Contents/Home"
-export PATH="$JAVA_HOME/bin:$PATH"
-```
-Controll+O
-
-Enter
-
-Controll+X
-
-`source ~/.zshrc`
-
-Verify with:
-```
-echo $JAVA_HOME
-java -version
-```
-then: `./gradlew runClient` and ur done
+* download the mod (dont chaneg the file name at all!)
+* open the folder and run the mod_launcher file
+* allow everything (it needs access to ur folders so it can find the mod folder)
+* cachow you can play minecraft now (it may take a minute to load cuz it needs to download all the assets)
 
 
 ## 📋 Description
