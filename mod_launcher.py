@@ -5,10 +5,21 @@ import platform
 import shutil
 import subprocess
 import ssl
-import certifi
 import glob
 from pathlib import Path
+import sys
 
+try:
+    import certifi
+except ImportError:
+    print("Installing missing package: certifi")
+    subprocess.check_call([
+        sys.executable, "-m", "pip",
+        "install", "--user", "certifi"
+    ])
+    import certifi
+
+print("All Python dependencies are ready!")
 
 # search for HellenicEchoes-master
 search_path = Path('.') 
