@@ -103,6 +103,10 @@ java_home = matches[0]
 # Configure future Terminal sessions
 zshrc = os.path.expanduser("~/.zshrc")
 
+if not os.path.exists(zshrc):
+    with open(zshrc, "w") as f:
+        pass
+
 with open(zshrc, "r") as f:
     existing = f.read()
 
