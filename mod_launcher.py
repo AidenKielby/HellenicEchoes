@@ -125,10 +125,11 @@ subprocess.run(["java", "-version"], check=True)
 
 print("Java 17 successfully configured!")
 
-if mod_path is not None:
+try:
     command = f"""cd {mod_path}
     ./gradlew runClient"""
-else:
+except NameError:
+    print("could not find mod path... assuming launcher iss in mod folder!")
     command = "./gradlew runClient"
 
 subprocess.run(command, shell=True, executable="/bin/bash")
