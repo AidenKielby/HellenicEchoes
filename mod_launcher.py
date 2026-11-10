@@ -17,7 +17,13 @@ except ImportError:
         sys.executable, "-m", "pip",
         "install", "--user", "certifi"
     ])
-    import certifi
+    
+    print("Restarting launcher...")
+
+    os.execv(
+        sys.executable,
+        [sys.executable] + sys.argv
+    )
 
 print("All Python dependencies are ready!")
 
@@ -119,7 +125,10 @@ subprocess.run(["java", "-version"], check=True)
 
 print("Java 17 successfully configured!")
 
-command = f"""cd {mod_path}
-./gradlew runClient"""
+if mod_path is not None:
+    command = f"""cd {mod_path}
+    ./gradlew runClient"""
+else:
+    command = "./gradlew runClient"
 
 subprocess.run(command, shell=True, executable="/bin/bash")
